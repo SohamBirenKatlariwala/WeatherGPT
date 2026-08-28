@@ -110,15 +110,15 @@ graph TD
 
 Let $Q$ denote the user query, $L = (\text{lat}, \text{lon})$ represent spatial coordinates, and $\mathcal{M}$ represent the real-time meteorological state vector returned by the telemetry provider:
 
-$$\mathcal{M} = \{ T_{2m}, RH_{2m}, W_{10m}, \text{Code}_{weather}, P_{precip} \}$$
+$$\mathcal{M} = \{ T_{2m},\, RH_{2m},\, W_{10m},\, W_{\text{code}},\, P_{\text{precip}} \}$$
 
-The grounded context transformation function $\Phi(Q, L, \mathcal{M})$ synthesizes the deterministic prompt payload $\mathcal{P}_{injected}$ provided to the Gemini LLM inference engine:
+The grounded context transformation function $\Phi(Q, L, \mathcal{M})$ synthesizes the deterministic prompt payload $\mathcal{P}_{\text{injected}}$ provided to the Gemini LLM inference engine:
 
-$$\mathcal{P}_{injected} = \Phi(Q, L, \mathcal{M}) = \text{Prompt}_{system} \concat \mathcal{M}_{formatted} \concat Q$$
+$$\mathcal{P}_{\text{injected}} = \Phi(Q, L, \mathcal{M}) = \text{Prompt}_{\text{system}} \parallel \mathcal{M}_{\text{formatted}} \parallel Q$$
 
-The system guarantees that for any generated response $R = \text{LLM}(\mathcal{P}_{injected})$, the factual propositions $\mathcal{F}(R)$ strictly satisfy:
+The system guarantees that for any generated response $R = \text{LLM}(\mathcal{P}_{\text{injected}})$, the factual propositions $\mathcal{F}(R)$ strictly satisfy:
 
-$$\mathcal{F}(R) \subseteq \mathcal{M} \cup \text{Knowledge}_{domain}$$
+$$\mathcal{F}(R) \subseteq \mathcal{M} \cup \text{DomainKnowledge}$$
 
 preventing factual contradiction between generated text and observed physical telemetry.
 
@@ -130,24 +130,24 @@ Benchmarking was conducted across representative execution environments: a simul
 
 ### 3.1 Latency Analysis ($\text{N} = 500$ Trials)
 
-$$\text{Latency}_{Total} = t_{\text{Geocode}} + t_{\text{Telemetry}} + t_{\text{Gemini\_Inference}} + t_{\text{DB\_Write}}$$
+$$\text{Latency}_{\text{Total}} = t_{\text{Geocode}} + t_{\text{Telemetry}} + t_{\text{Gemini}} + t_{\text{DB}}$$
 
-| Phase | Mean Duration ($\text{ms}$) | Standard Deviation ($\sigma$) | P95 Latency ($\text{ms}$) |
+| Phase | Mean Duration | Standard Deviation ($\sigma$) | P95 Latency |
 | :--- | :---: | :---: | :---: |
-| Spatial Geocoding ($t_{\text{Geocode}}$) | $120\text{ ms}$ | $18\text{ ms}$ | $155\text{ ms}$ |
-| Telemetry Ingestion ($t_{\text{Telemetry}}$) | $145\text{ ms}$ | $22\text{ ms}$ | $180\text{ ms}$ |
-| Gemini 2.5 Inference ($t_{\text{Gemini}}$) | $540\text{ ms}$ | $65\text{ ms}$ | $670\text{ ms}$ |
-| Local DB Cache Operations ($t_{\text{DB}}$) | $8\text{ ms}$ | $2\text{ ms}$ | $12\text{ ms}$ |
-| **Total End-to-End Latency** | **$813\text{ ms}$** | **$78\text{ ms}$** | **$985\text{ ms}$** |
+| Spatial Geocoding ($t_{\text{Geocode}}$) | 120 ms | 18 ms | 155 ms |
+| Telemetry Ingestion ($t_{\text{Telemetry}}$) | 145 ms | 22 ms | 180 ms |
+| Gemini 2.5 Inference ($t_{\text{Gemini}}$) | 540 ms | 65 ms | 670 ms |
+| Local DB Cache Operations ($t_{\text{DB}}$) | 8 ms | 2 ms | 12 ms |
+| **Total End-to-End Latency** | **813 ms** | **78 ms** | **985 ms** |
 
 ### 3.2 Computational & Storage Footprint Benchmark
 
 | Metric Parameter | Containerized Stack (Python / MySQL) | WeatherGPT Engine (PHP 8.x / SQLite) | Optimization Gain |
 | :--- | :---: | :---: | :---: |
-| **Idle Memory Footprint** | $450\text{ MB}$ | **$8.5\text{ MB}$** | **$98.1\%\text{ reduction}$** |
-| **Active Peak RAM Usage** | $1.2\text{ GB}$ | **$24.0\text{ MB}$** | **$98.0\%\text{ reduction}$** |
-| **Cold-Start Boot Time** | $12.4\text{ s}$ | **$< 0.001\text{ s}$** | Instantaneous |
-| **Storage Footprint** | $2.8\text{ GB}$ | **$3.2\text{ MB}$** | **$99.8\%\text{ reduction}$** |
+| **Idle Memory Footprint** | 450 MB | **8.5 MB** | **98.1% reduction** |
+| **Active Peak RAM Usage** | 1.2 GB | **24.0 MB** | **98.0% reduction** |
+| **Cold-Start Boot Time** | 12.4 s | **< 0.001 s** | Instantaneous |
+| **Storage Footprint** | 2.8 GB | **3.2 MB** | **99.8% reduction** |
 
 ---
 
@@ -184,22 +184,22 @@ $$\mathcal{L}_{\text{supported}} = \{ \text{en}, \text{hi}, \text{bn}, \text{te}
 
 ### Multilingual Voice Processing Specifications
 
-| Language Code | Language Name | Native Script | Speech Recognition Code (ISO) | Web Speech API Support |
-| :---: | :--- | :--- | :---: | :---: |
-| `en` | English | English | `en-US` | ✅ Native |
-| `hi` | Hindi | हिन्दी | `hi-IN` | ✅ Native |
-| `bn` | Bengali | বাংলা | `bn-IN` | ✅ Native |
-| `te` | Telugu | తెలుగు | `te-IN` | ✅ Native |
-| `mr` | Marathi | मराठी | `mr-IN` | ✅ Native |
-| `ta` | Tamil | தமிழ் | `ta-IN` | ✅ Native |
-| `gu` | Gujarati | ગુજરાતી | `gu-IN` | ✅ Native |
-| `kn` | Kannada | ಕನ್ನಡ | `kn-IN` | ✅ Native |
-| `ml` | Malayalam | മലയാളം | `ml-IN` | ✅ Native |
-| `pa` | Punjabi | ਪੰਜਾਬੀ | `pa-IN` | ✅ Native |
-| `ur` | Urdu | اردو | `ur-PK` | ✅ Native |
-| `or` | Odia | ଓଡ଼ିଆ | `or-IN` | ✅ Native |
-| `as` | Assamese | অসমীয়া | `as-IN` | ✅ Native |
-| `auto` | Auto Detect | Dynamic | Browser Default | ✅ Automatic |
+| Language Code | Language Name | Native Script | ISO Voice Code | Speech Engine Status |
+| :---: | :--- | :--- | :---: | :--- |
+| `en` | English | English | `en-US` | Web Speech API (Native) |
+| `hi` | Hindi | हिन्दी | `hi-IN` | Web Speech API (Native) |
+| `bn` | Bengali | বাংলা | `bn-IN` | Web Speech API (Native) |
+| `te` | Telugu | తెలుగు | `te-IN` | Web Speech API (Native) |
+| `mr` | Marathi | मराठी | `mr-IN` | Web Speech API (Native) |
+| `ta` | Tamil | தமிழ் | `ta-IN` | Web Speech API (Native) |
+| `gu` | Gujarati | ગુજરાતી | `gu-IN` | Web Speech API (Native) |
+| `kn` | Kannada | ಕನ್ನಡ | `kn-IN` | Web Speech API (Native) |
+| `ml` | Malayalam | മലയാളം | `ml-IN` | Web Speech API (Native) |
+| `pa` | Punjabi | ਪੰਜਾਬੀ | `pa-IN` | Web Speech API (Native) |
+| `ur` | Urdu | اردو | `ur-PK` | Web Speech API (Native) |
+| `or` | Odia | ଓଡ଼ିଆ | `or-IN` | Web Speech API (Native) |
+| `as` | Assamese | অসমীয়া | `as-IN` | Web Speech API (Native) |
+| `auto` | Auto Detect | Dynamic | Browser Default | Dynamic Locale Detection |
 
 ---
 
