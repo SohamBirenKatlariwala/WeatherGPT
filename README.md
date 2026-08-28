@@ -1,13 +1,25 @@
 # 🔬 WeatherGPT: A Grounded Multi-Tiered Conversational Weather Intelligence Engine for Localized Meteorological Informatics
 
-**Technical Report & System Architecture Paper**  
-*Smart India Hackathon (SIH 2026) Initiative • Indian Institute of Technology Madras (IITM) Domain Context*
+> **Indian Institute of Technology Madras (IIT Madras / IITM)**  
+> *Developed for Smart India Hackathon (SIH 2026)*
 
+---
+
+[![IIT Madras](https://img.shields.io/badge/Institution-IIT%20Madras%20(IITM)-003366?logo=academia&logoColor=white)](https://www.iitm.ac.in)
+[![Hackathon](https://img.shields.io/badge/Event-Smart%20India%20Hackathon%20(SIH%202026)-FF9933?logo=government&logoColor=white)](https://sih.gov.in)
 [![Academic Architecture](https://img.shields.io/badge/System-Research%20Specification-1A2B4C.svg)](file:///c:/Users/soham/Desktop/SIH%202026%20IITM/architecture_diagram_prompt.md)
 [![Model Engine](https://img.shields.io/badge/AI%20Engine-Google%20Gemini%202.5%20Flash-4285F4?logo=google&logoColor=white)](https://aistudio.google.com)
 [![Telemetry Grounding](https://img.shields.io/badge/Data-Open--Meteo%20Real--Time%20API-00B4D8)](https://open-meteo.com)
 [![Execution Runtime](https://img.shields.io/badge/Runtime-PHP%208.x%20%7C%20Node.js%20ES6+-777BB4?logo=php&logoColor=white)](https://php.net)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+---
+
+## 🏛️ Institutional Context: IIT Madras (IITM) & SIH 2026
+
+This project was conceived, designed, and engineered **under the aegis of Indian Institute of Technology Madras (IIT Madras / IITM)** for the **Smart India Hackathon (SIH 2026)**. 
+
+WeatherGPT directly targets high-priority national problem statements in climate adaptation, disaster preparedness, and agricultural meteorological intelligence for rural India, combining academic rigor from IITM with practical deployment feasibility.
 
 ---
 
@@ -43,7 +55,7 @@ Localized weather forecasting and extreme event dissemination remain critical bo
 
 ---
 
-## 2. 🏛️ System Architecture & Mathematical Formulation
+## 2. 🏗️ System Architecture & Mathematical Formulation
 
 The WeatherGPT intelligence pipeline is organized into five operational tiers: **User Perception**, **Routing & Validation**, **Telemetry Grounding**, **Generative Inference**, and **Response Orchestration**.
 
@@ -220,32 +232,24 @@ Navigate to:
 
 ---
 
-## 7. 🔮 Future Research Directions
+## 🎓 Citation & Acknowledgments
 
-1. **Integration with Microscale WRF Models**: Ingestion of custom Weather Research and Forecasting (WRF) output layers for hyper-local sub-kilometer forecasts.
-2. **BHASHINI ASR/TTS API Integration**: Deep integration with National Language Translation Mission (BHASHINI) endpoints for extended voice processing in rare tribal dialects.
-3. **Offline Edge Ingestion**: Implementing Web Push and Service Workers for offline-first emergency weather alert delivery during severe network outages.
-
----
-
-## 📚 Citation
-
-If you utilize WeatherGPT's architecture, dataset schemas, or grounding methodology in academic research, please cite this project as follows:
+If you utilize WeatherGPT's architecture, dataset schemas, or grounding methodology in academic research or SIH projects, please cite this project as follows:
 
 ```bibtex
 @techreport{Katlariwala2026WeatherGPT,
   author       = {Katlariwala, Soham Biren},
   title        = {WeatherGPT: A Grounded Multi-Tiered Conversational Weather Intelligence Engine for Localized Meteorological Informatics},
-  institution  = {Smart India Hackathon (SIH 2026) / Indian Institute of Technology Madras},
+  institution  = {Indian Institute of Technology Madras (IITM) / Smart India Hackathon (SIH 2026)},
   year         = {2026},
   url          = {https://github.com/SohamBirenKatlariwala/WeatherGPT},
-  note         = {SIH 2026 Technical Architecture Publication}
+  note         = {SIH 2026 Technical Architecture Publication -- IIT Madras}
 }
 ```
 
 ---
 
 <p align="center">
-  <b>WeatherGPT Technical Research Group</b> • <i>SIH 2026 Enterprise Meteorological Intelligence</i><br>
-  Designed & Authored by <b>Soham Biren Katlariwala</b>
+  <b>WeatherGPT Research Team</b> • <i>Indian Institute of Technology Madras (IITM)</i><br>
+  Developed for <b>Smart India Hackathon (SIH 2026)</b> by <b>Soham Biren Katlariwala</b>
 </p>
