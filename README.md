@@ -1,4 +1,4 @@
-# 🔬 WeatherGPT: A Grounded Multi-Tiered Conversational Weather Intelligence Engine for Localized Meteorological Informatics
+# WeatherGPT: A Grounded Multi-Tiered Conversational Weather Intelligence Engine for Localized Meteorological Informatics
 
 > **Indian Institute of Technology Madras (IIT Madras / IITM)**  
 > *Developed for Smart India Hackathon (SIH 2026)*
@@ -15,7 +15,7 @@
 
 ---
 
-## 🏛️ Institutional Context: IIT Madras (IITM) & SIH 2026
+## Institutional Context: IIT Madras (IITM) & SIH 2026
 
 This project was conceived, designed, and engineered **under the aegis of Indian Institute of Technology Madras (IIT Madras / IITM)** for the **Smart India Hackathon (SIH 2026)**. 
 
@@ -23,7 +23,7 @@ WeatherGPT directly targets high-priority national problem statements in climate
 
 ---
 
-## 🎨 Graphical Abstract
+## Graphical Abstract
 
 <p align="center">
   <img src="Flowchart.png" alt="WeatherGPT Graphical Abstract & System Workflow Flowchart" width="880"/>
@@ -33,7 +33,7 @@ WeatherGPT directly targets high-priority national problem statements in climate
 
 ---
 
-## 📋 Abstract
+## Abstract
 
 Large Language Models (LLMs) often suffer from temporal stagnation and catastrophic hallucinations when generating real-time meteorological advisories, presenting severe risks for agricultural decision-making and emergency disaster preparedness. **WeatherGPT** addresses these systemic limitations by introducing a deterministic, multi-tiered conversational architecture that couples **real-time numerical weather prediction (NWP) telemetry** with **generative artificial intelligence**. 
 
@@ -41,7 +41,7 @@ By orchestrating real-time spatial geocoding, Open-Meteo RESTful API telemetry i
 
 ---
 
-## 1. 📖 Introduction & Research Rationale
+## 1. Introduction & Research Rationale
 
 Localized weather forecasting and extreme event dissemination remain critical bottlenecks in agricultural productivity and disaster risk mitigation in climate-vulnerable zones across India. Conventional meteorological portals present complex synoptic charts and raw telemetry tables that remain inaccessible to rural stakeholders. Conversely, standard generative conversational agents (e.g., non-grounded LLMs) lack access to live atmospheric states and frequently invent plausible yet mathematically inaccurate weather forecasts.
 
@@ -49,10 +49,10 @@ Localized weather forecasting and extreme event dissemination remain critical bo
 
 | Attribute | Standard LLM Engine | WeatherGPT Platform |
 | :--- | :--- | :--- |
-| **Live Telemetry Access** | ❌ Stale Static Training Data | ✅ Real-Time Meteorological Streaming |
-| **Hallucination Risk** | ⚠️ High (Unverifiable Output) | 🔒 Factual Telemetry Grounded |
-| **Infrastructure Overhead** | 🏋️ Heavy GPU Compute Instance | ⚡ Ultra-Light PHP 8.x + SQLite |
-| **Multilingual Voice Support** | ⚠️ Limited Native Dialects | 🎙️ Native Web Speech (14 Dialects) |
+| **Live Telemetry Access** | Stale Static Training Data | Real-Time Meteorological Streaming |
+| **Hallucination Risk** | High (Unverifiable Output) | Factual Telemetry Grounded |
+| **Infrastructure Overhead** | Heavy GPU Compute Instance | Ultra-Light PHP 8.x + SQLite |
+| **Multilingual Voice Support** | Limited Native Dialects | Native Web Speech (14 Dialects) |
 
 ### Key Research Contributions
 1. **Deterministic Telemetry Grounding Protocol**: A novel middleware architecture that injects multi-parameter real-time atmospheric measurements ($T_{2m}, RH_{2m}, W_{10m}, UV$) directly into LLM inference contexts prior to response synthesis.
@@ -61,36 +61,36 @@ Localized weather forecasting and extreme event dissemination remain critical bo
 
 ---
 
-## 2. 🏗️ System Architecture & Mathematical Formulation
+## 2. System Architecture & Mathematical Formulation
 
 The WeatherGPT intelligence pipeline is organized into five operational tiers: **User Perception**, **Routing & Validation**, **Telemetry Grounding**, **Generative Inference**, and **Response Orchestration**.
 
 ```mermaid
 graph TD
     subgraph Layer 1: Perception & Interaction
-        U["👤 User Query (Text / Voice Input)"]
-        G["📍 Spatial Coordinates (HTML5 Geolocation / Geocoding API)"]
+        U["User Query (Text / Voice Input)"]
+        G["Spatial Coordinates (HTML5 Geolocation / Geocoding API)"]
     end
 
     subgraph Layer 2: Core Middleware Router
-        R["⚙️ API Dispatcher (api.php / dev_server.js)"]
-        C["💾 Caching Engine (SQLite WAL / In-Memory JSON)"]
+        R["API Dispatcher (api.php / dev_server.js)"]
+        C["Caching Engine (SQLite WAL / In-Memory JSON)"]
     end
 
     subgraph Layer 3: Meteorological Telemetry Ingestion
-        OM["🛰️ Open-Meteo REST API (Real-Time Physics Engine)"]
-        GEO["🗺️ Geocoding Service (Open-Meteo Geocoding)"]
+        OM["Open-Meteo REST API (Real-Time Physics Engine)"]
+        GEO["Geocoding Service (Open-Meteo Geocoding)"]
     end
 
     subgraph Layer 4: Generative AI Ingestion & Grounding
-        GEM["🤖 Google Gemini 2.5 Inference Core"]
-        CTX["📝 Context Synthesizer & Prompt Injector"]
+        GEM["Google Gemini 2.5 Inference Core"]
+        CTX["Context Synthesizer & Prompt Injector"]
     end
 
     subgraph Layer 5: Provenance & Output Generation
-        E["🔍 Evidence Drawer (Provenance & Timestamp Metadata)"]
-        TTS["🎙️ Multilingual Text-to-Speech Engine"]
-        RESP["💬 Formatted Response Output"]
+        E["Evidence Drawer (Provenance & Timestamp Metadata)"]
+        TTS["Multilingual Text-to-Speech Engine"]
+        RESP["Formatted Response Output"]
     end
 
     U --> R
@@ -124,7 +124,7 @@ preventing factual contradiction between generated text and observed physical te
 
 ---
 
-## 3. 🧪 Empirical Performance & Benchmarks
+## 3. Empirical Performance & Benchmarks
 
 Benchmarking was conducted across representative execution environments: a simulated Shared PHP 8.2 host (Hostinger Single Shared) and a local virtualized Node.js runtime.
 
@@ -151,7 +151,7 @@ $$\text{Latency}_{\text{Total}} = t_{\text{Geocode}} + t_{\text{Telemetry}} + t_
 
 ---
 
-## 4. 🗂️ Module Architecture & Code Repository Layout
+## 4. Module Architecture & Code Repository Layout
 
 The repository is modularized into discrete, decoupled functional units:
 
@@ -176,7 +176,7 @@ SIH 2026 IITM/
 
 ---
 
-## 5. 🌐 Multilingual Phonetic & Speech Pipeline
+## 5. Multilingual Phonetic & Speech Pipeline
 
 WeatherGPT incorporates a native 14-language dictionary schema coupled with the browser-native `SpeechRecognition` and `SpeechSynthesis` Web APIs, supporting automatic language identification and regional voice output.
 
@@ -203,7 +203,7 @@ $$\mathcal{L}_{\text{supported}} = \{ \text{en}, \text{hi}, \text{bn}, \text{te}
 
 ---
 
-## 6. 🚀 Operational Setup & Reproduction Guide
+## 6. Operational Setup & Reproduction Guide
 
 ### Environment Prerequisites
 - **Production Server**: PHP 8.0+ with extensions: `pdo`, `pdo_sqlite`, `curl`, `json`, `mbstring`.
@@ -234,7 +234,7 @@ Navigate to:
 
 ---
 
-## 🎓 Citation & Acknowledgments
+## Citation & Acknowledgments
 
 If you utilize WeatherGPT's architecture, dataset schemas, or grounding methodology in academic research or SIH projects, please cite this project as follows:
 
