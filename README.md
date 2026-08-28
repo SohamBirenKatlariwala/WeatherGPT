@@ -35,18 +35,14 @@ By orchestrating real-time spatial geocoding, Open-Meteo RESTful API telemetry i
 
 Localized weather forecasting and extreme event dissemination remain critical bottlenecks in agricultural productivity and disaster risk mitigation in climate-vulnerable zones across India. Conventional meteorological portals present complex synoptic charts and raw telemetry tables that remain inaccessible to rural stakeholders. Conversely, standard generative conversational agents (e.g., non-grounded LLMs) lack access to live atmospheric states and frequently invent plausible yet mathematically inaccurate weather forecasts.
 
-```
-+-------------------------------------------------------------------------------+
-|                             SYSTEM COMPARISON                                 |
-+------------------------------+-------------------------------+----------------+
-| Attribute                    | Standard LLM                  | WeatherGPT     |
-+------------------------------+-------------------------------+----------------+
-| Live Telemetry Access        | ❌ Stale Training Data        | ✅ Real-Time   |
-| Hallucination Index          | ⚠️ High (Unverifiable)       | 🔒 Deterministic|
-| Infrastructure Requirement   | 🏋️ Heavy GPU Instance          | ⚡ PHP Shared  |
-| Regional Multilingual Speech | ⚠️ Limited Native Binding     | 🎙️ 14 Dialects |
-+------------------------------+-------------------------------+----------------+
-```
+### System Architectural Comparison
+
+| Attribute | Standard LLM Engine | WeatherGPT Platform |
+| :--- | :--- | :--- |
+| **Live Telemetry Access** | ❌ Stale Static Training Data | ✅ Real-Time Meteorological Streaming |
+| **Hallucination Risk** | ⚠️ High (Unverifiable Output) | 🔒 Factual Telemetry Grounded |
+| **Infrastructure Overhead** | 🏋️ Heavy GPU Compute Instance | ⚡ Ultra-Light PHP 8.x + SQLite |
+| **Multilingual Voice Support** | ⚠️ Limited Native Dialects | 🎙️ Native Web Speech (14 Dialects) |
 
 ### Key Research Contributions
 1. **Deterministic Telemetry Grounding Protocol**: A novel middleware architecture that injects multi-parameter real-time atmospheric measurements ($T_{2m}, RH_{2m}, W_{10m}, UV$) directly into LLM inference contexts prior to response synthesis.
@@ -134,20 +130,14 @@ $$\text{Latency}_{Total} = t_{\text{Geocode}} + t_{\text{Telemetry}} + t_{\text{
 | Local DB Cache Operations ($t_{\text{DB}}$) | $8\text{ ms}$ | $2\text{ ms}$ | $12\text{ ms}$ |
 | **Total End-to-End Latency** | **$813\text{ ms}$** | **$78\text{ ms}$** | **$985\text{ ms}$** |
 
-### 3.2 Resource Footprint Comparison
+### 3.2 Computational & Storage Footprint Benchmark
 
-```
-+-------------------------------------------------------------------------------+
-|                       MEMORY & COMPUTATIONAL FOOTPRINT                        |
-+------------------------------+-------------------------------+----------------+
-| Metric                       | Containerized Stack (Python/MySQL)| WeatherGPT PHP |
-+------------------------------+-------------------------------+----------------+
-| Idle Memory Consumption      | 450 MB                        | 8.5 MB         |
-| Active Peak RAM Usage        | 1.2 GB                        | 24.0 MB        |
-| Cold-Start Boot Time         | 12.4 s                        | 0.001 s        |
-| Storage Footprint            | 2.8 GB                        | 3.2 MB         |
-+------------------------------+-------------------------------+----------------+
-```
+| Metric Parameter | Containerized Stack (Python / MySQL) | WeatherGPT Engine (PHP 8.x / SQLite) | Optimization Gain |
+| :--- | :---: | :---: | :---: |
+| **Idle Memory Footprint** | $450\text{ MB}$ | **$8.5\text{ MB}$** | **$98.1\%\text{ reduction}$** |
+| **Active Peak RAM Usage** | $1.2\text{ GB}$ | **$24.0\text{ MB}$** | **$98.0\%\text{ reduction}$** |
+| **Cold-Start Boot Time** | $12.4\text{ s}$ | **$< 0.001\text{ s}$** | Instantaneous |
+| **Storage Footprint** | $2.8\text{ GB}$ | **$3.2\text{ MB}$** | **$99.8\%\text{ reduction}$** |
 
 ---
 
@@ -182,22 +172,24 @@ WeatherGPT incorporates a native 14-language dictionary schema coupled with the 
 
 $$\mathcal{L}_{\text{supported}} = \{ \text{en}, \text{hi}, \text{bn}, \text{te}, \text{mr}, \text{ta}, \text{gu}, \text{kn}, \text{ml}, \text{pa}, \text{ur}, \text{or}, \text{as}, \text{auto} \}$$
 
-```
-+-------------------------------------------------------------------------------+
-|                      MULTILINGUAL VOICE PROCESSING SPECS                      |
-+------------------+-----------------------+------------------------------------+
-| Language Code    | Language Name         | Speech Recognition Code (ISO)      |
-+------------------+-----------------------+------------------------------------+
-| hi               | Hindi (हिन्दी)        | hi-IN                              |
-| bn               | Bengali (বাংলা)       | bn-IN                              |
-| te               | Telugu (తెలుగు)       | te-IN                              |
-| mr               | Marathi (मराठी)       | mr-IN                              |
-| ta               | Tamil (தமிழ்)         | ta-IN                              |
-| gu               | Gujarati (ગુજરાતી)    | gu-IN                              |
-| kn               | Kannada (ಕನ್ನಡ)       | kn-IN                              |
-| ml               | Malayalam (മലയാളം)   | ml-IN                              |
-+------------------+-----------------------+------------------------------------+
-```
+### Multilingual Voice Processing Specifications
+
+| Language Code | Language Name | Native Script | Speech Recognition Code (ISO) | Web Speech API Support |
+| :---: | :--- | :--- | :---: | :---: |
+| `en` | English | English | `en-US` | ✅ Native |
+| `hi` | Hindi | हिन्दी | `hi-IN` | ✅ Native |
+| `bn` | Bengali | বাংলা | `bn-IN` | ✅ Native |
+| `te` | Telugu | తెలుగు | `te-IN` | ✅ Native |
+| `mr` | Marathi | मराठी | `mr-IN` | ✅ Native |
+| `ta` | Tamil | தமிழ் | `ta-IN` | ✅ Native |
+| `gu` | Gujarati | ગુજરાતી | `gu-IN` | ✅ Native |
+| `kn` | Kannada | ಕನ್ನಡ | `kn-IN` | ✅ Native |
+| `ml` | Malayalam | മലയാളം | `ml-IN` | ✅ Native |
+| `pa` | Punjabi | ਪੰਜਾਬੀ | `pa-IN` | ✅ Native |
+| `ur` | Urdu | اردو | `ur-PK` | ✅ Native |
+| `or` | Odia | ଓଡ଼ିଆ | `or-IN` | ✅ Native |
+| `as` | Assamese | অসমীয়া | `as-IN` | ✅ Native |
+| `auto` | Auto Detect | Dynamic | Browser Default | ✅ Automatic |
 
 ---
 
