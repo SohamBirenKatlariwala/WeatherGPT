@@ -1,0 +1,10 @@
+# Database & Data files
+data/*.sqlite
+data/*.sqlite-journal
+data/*.sqlite-wal
+data/*.sqlite-shm
+
+# Server Logs & Temp
+*.log
+.DS_Store
+Thumbs.db

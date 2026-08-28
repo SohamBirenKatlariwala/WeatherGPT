@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "role": "admin",
+      "force_password_change": 1
+    }
+  ],
+  "conversations": [],
+  "messages": [],
+  "settings": {
+    "gemini_model": "gemini-2.5-flash",
+    "gemini_api_key": "",
+    "weather_cache_ttl": 900
+  },
+  "audit_logs": []
+}
