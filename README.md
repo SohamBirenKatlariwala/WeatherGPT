@@ -23,6 +23,16 @@ WeatherGPT directly targets high-priority national problem statements in climate
 
 ---
 
+## 🎨 Graphical Abstract
+
+<p align="center">
+  <img src="Flowchart.png" alt="WeatherGPT Graphical Abstract & System Workflow Flowchart" width="880"/>
+  <br>
+  <i><b>Figure 1:</b> Graphical Abstract illustrating the end-to-end data ingestion, grounding, AI inference, and speech synthesis pipeline of WeatherGPT.</i>
+</p>
+
+---
+
 ## 📋 Abstract
 
 Large Language Models (LLMs) often suffer from temporal stagnation and catastrophic hallucinations when generating real-time meteorological advisories, presenting severe risks for agricultural decision-making and emergency disaster preparedness. **WeatherGPT** addresses these systemic limitations by introducing a deterministic, multi-tiered conversational architecture that couples **real-time numerical weather prediction (NWP) telemetry** with **generative artificial intelligence**. 
