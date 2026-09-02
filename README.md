@@ -157,21 +157,26 @@ The repository is modularized into discrete, decoupled functional units:
 
 ```
 SIH 2026 IITM/
-├── index.php                         # Main Single-Page Application (SPA) UI & State Engine
-├── admin.php                         # Administrative Operations, Analytics & Policy Control
-├── api.php                           # RESTful Endpoint Handler & Grounding Orchestration Engine
-├── auth.php                          # Session Validation, RBAC & Password Cryptography
-├── config.php                        # System Constants, CSRF Guard & Language Dictionaries
-├── db.php                            # SQLite Schema Definition, PDO Abstraction & Migration Engine
-├── dev_server.js                     # Offline Node.js Development & Virtual Server Engine
-├── .htaccess                         # Apache Security Policy, Routing & SQLite Isolation Rules
-├── architecture_diagram_prompt.md    # Vector Graphic Architecture Prompt Specifications
-├── WeatherGPT_Master_Prompt.txt      # System Prompt Engineering & Factual Guardrails
-├── WeatherGPT_Hostinger_Deployment.zip # Pre-packaged Production Deployment Archive
-├── WeatherGPT_SIH_PPT.pptx           # SIH 2026 Project Presentation Slide Deck
+├── index.php                                     # Main Single-Page Application (SPA) UI & State Engine
+├── admin.php                                     # Administrative Operations, Analytics & Policy Control
+├── api.php                                       # RESTful Endpoint Handler & Grounding Orchestration Engine
+├── auth.php                                      # Session Validation, RBAC & Password Cryptography
+├── config.php                                    # System Constants, CSRF Guard & Language Dictionaries
+├── db.php                                        # SQLite Schema Definition, PDO Abstraction & Migration Engine
+├── dev_server.js                                 # Offline Node.js Development & Virtual Server Engine
+├── .htaccess                                     # Apache Security Policy, Routing & SQLite Isolation Rules
+├── Flowchart.png                                 # High-Resolution Graphical Abstract Diagram
+├── sigconf.tex                                   # ACM/NeurIPS Research Paper LaTeX Source File
+├── ablation_latency.png                          # empirical Latency Distribution & Ablation Benchmark Chart
+├── Results.txt                                   # Raw Empirical Benchmarking Trial Log Data
+├── ACM_Conference_Proceedings_Primary_Article_Template.pdf # Reference PDF Publication Template
+├── architecture_diagram_prompt.md                # Vector Graphic Architecture Prompt Specifications
+├── WeatherGPT_Master_Prompt.txt                  # System Prompt Engineering & Factual Guardrails
+├── WeatherGPT_Hostinger_Deployment.zip             # Pre-packaged Production Deployment Archive
+├── WeatherGPT_SIH_PPT.pptx                       # SIH 2026 Project Presentation Slide Deck
 └── data/
-    ├── .gitkeep                      # Schema directory preservation file
-    └── weathergpt.sqlite             # Embedded SQLite Database Instance (Auto-generated)
+    ├── .gitkeep                                  # Schema directory preservation file
+    └── weathergpt.sqlite                         # Embedded SQLite Database Instance (Auto-generated)
 ```
 
 ---
