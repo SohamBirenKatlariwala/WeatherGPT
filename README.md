@@ -151,25 +151,19 @@ All project source code, research paper specifications, prompts, presentation de
 
 ```
 SIH 2026 IITM/
-├── index.php                                     # Main Single-Page Application (SPA) UI & State Engine
-├── admin.php                                     # Administrative Operations, Analytics & Policy Control
-├── api.php                                       # RESTful Endpoint Handler & Grounding Orchestration Engine
-├── auth.php                                      # Session Validation, RBAC & Password Cryptography
-├── config.php                                    # System Constants, CSRF Guard & Language Dictionaries
-├── db.php                                        # SQLite Schema Definition, PDO Abstraction & Migration Engine
-├── dev_server.js                                 # Standalone Node.js Development & Virtual Server Engine
-├── .htaccess                                     # Apache Security Policy, Routing & SQLite Isolation Rules
-├── Flowchart.png                                 # High-Resolution Graphical Abstract Diagram
-├── sigconf.tex                                   # ACM/NeurIPS Research Paper LaTeX Source File
-├── ablation_latency.png                          # Empirical Latency Distribution & Ablation Benchmark Plot
-├── Results.txt                                   # Raw Empirical Benchmarking Trial Log Data (N=500)
-├── ACM_Conference_Proceedings_Primary_Article_Template.pdf # ACM Publication Format Template Reference
-├── architecture_diagram_prompt.md                # Vector Graphic Architecture Specification Prompt
-├── WeatherGPT_Master_Prompt.txt                  # System Prompt Engineering & Factual Guardrail Spec
-├── WeatherGPT_Hostinger_Deployment.zip             # Pre-packaged Production Deployment Archive
-├── WeatherGPT_SIH_PPT.pptx                       # SIH 2026 Project Presentation Slide Deck
+├── index.php         # Main Single-Page Application (SPA) User Interface & State Engine
+├── admin.php         # Administrative Control Panel, System Analytics & Key Management
+├── api.php           # RESTful Dispatcher & Grounding Orchestration Engine
+├── auth.php          # Session Validation, Security Guards & User Management
+├── config.php        # System Parameters, CSRF Guard & Language Dictionaries
+├── db.php            # SQLite Schema Definition, PDO Abstraction & Migration Engine
+├── dev_server.js     # Standalone Node.js Development & Virtual Server Engine
+├── Flowchart.png     # High-Resolution Graphical Abstract Diagram
+├── .htaccess         # Apache Security Directives, Routing & SQLite Isolation
+├── .gitignore        # Git Exclusion Rules for Temporary Database Files
+├── README.md         # Academic Specification & Prototype Documentation
 └── data/
-    └── .gitkeep                                  # Embedded SQLite Data Directory Preservation
+    └── .gitkeep      # Schema Directory Preservation
 ```
 
 ---
