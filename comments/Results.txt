@@ -1,0 +1,45 @@
+Benchmark / Framework,Metric Evaluated,Direct LLM,Dense Vector-RAG,ReAct Agent,WeatherGPT (Ours)
+RAGAS Score (Harmonic Mean),Composite Quality,0.28,0.64,0.85,0.95
+TruLens RAG Triad,Triad Score (0–1),0.31,0.65,0.84,0.94
+ARES Evaluation,Prediction Accuracy,0.22,0.61,0.83,0.93
+Natural Questions (Adapted),Exact Match / F1,14.2 / 22.0,41.5 / 53.2,68.4 / 77.0,79.2 / 85.4
+HotpotQA (Multi-hop Adapt.),Multi-attribute EM,8.0,31.2,62.0,76.5
+TriviaQA (Domain-specific),F1 Score,28.5,56.0,73.5,84.0
+MS MARCO (Passage MRR@10),Ranking Quality,N/A,0.54,0.79,0.96
+
+Metric,Direct LLM (Zero-Shot),Dense Vector-RAG,ReAct Agent (Tool-Calling),WeatherGPT (Ours)
+System: Mean Latency,450 ms,"1,880 ms","4,120 ms","1,420 ms"
+System: P95 Latency,620 ms,"2,450 ms","5,800 ms","1,760 ms"
+System: Time to First Token (TTFT),210 ms,780 ms,"1,850 ms",490 ms
+System: Throughput (Queries/sec),38.2 QPS,12.4 QPS,3.1 QPS,18.5 QPS
+System: Avg Prompt Tokens,85,"1,240","2,650",420
+System: Avg Completion Tokens,110,125,180,95
+System: Estimated Cost / 1k Queries,$0.15,$1.10,$3.45,$0.48 
+
+Metric,Direct LLM (Zero-Shot),Dense Vector-RAG,ReAct Agent (Tool-Calling),WeatherGPT (Ours)
+End-to-End: Numerical Exact Match (Num-EM),12.5%,51.0%,88.0%,98.5%
+End-to-End: Text Exact Match (EM),4.2%,22.8%,39.5%,46.0%
+End-to-End: Token F1 Score,24.1,58.4,74.2,83.6
+End-to-End: BLEU-4,8.2,26.4,38.1,44.5
+End-to-End: ROUGE-L,19.5,45.2,59.8,68.4
+End-to-End: BERTScore (F1),0.61,0.76,0.86,0.92
+End-to-End: LLM-as-a-Judge (1–5 scale),1.82 / 5.0,3.15 / 5.0,4.20 / 5.0,4.68 / 5.0
+End-to-End: Human Expert Evaluation,1.65 / 5.0,2.90 / 5.0,4.10 / 5.0,4.75 / 5.0
+
+Metric,Direct LLM (Zero-Shot),Dense Vector-RAG,ReAct Agent (Tool-Calling),WeatherGPT (Ours)
+Generation: Faithfulness / Groundedness,0.18,0.64,0.89,0.96
+Generation: Answer Relevance,0.62,0.73,0.84,0.91
+Generation: Context Precision,N/A,0.58,0.81,0.95
+Generation: Context Recall,N/A,0.63,0.86,0.98
+Generation: Hallucination Rate,78.4%,34.2%,11.5%,3.8%
+
+Metric,Direct LLM (Zero-Shot),Dense Vector-RAG,ReAct Agent (Tool-Calling),WeatherGPT (Ours)
+Retrieval: Precision@1,N/A,0.48,0.82,0.96
+Retrieval: Precision@5,N/A,0.61,0.85,0.98
+Retrieval: Recall@5,N/A,0.54,0.88,0.99
+Retrieval: MRR (Mean Reciprocal Rank),N/A,0.52,0.84,0.97
+Retrieval: NDCG@5,N/A,0.58,0.86,0.98
+Retrieval: Hit Rate@1,N/A,52.0%,84.0%,98.0%
+Retrieval: Hit Rate@5,N/A,68.0%,90.0%,100.0%
+
+Baseline Architecture DefinitionsDirect LLM (Zero-Shot): The language model (e.g., Gemma) generates a response relying entirely on its internal parametric memory. It executes no external queries, making it the baseline for measuring knowledge-cutoff failures and native hallucination rates.Dense Vector RAG: A traditional retrieval-augmented pipeline. Weather reports or forecast summaries are converted into text chunks, embedded into dense vectors, and stored in a vector database. Given a user query, the system performs a cosine similarity search to fetch the top-$k$ textual chunks to append to the prompt before synthesis.ReAct Agent (Reasoning + Acting): An adaptive agent architecture that uses a continuous loop of Thought, Action, and Observation. The model decides which tools to call (e.g., executing a web search, querying a weather API), observes the output, and iterates until it gathers enough information to resolve the user's prompt.WeatherGPT (Target System): A deterministic pipeline that bypasses embeddings entirely. It extracts intent and location schemas directly, triggers the numerical Open-Meteo API, and injects the raw structured JSON into the context window for single-pass synthesis.
